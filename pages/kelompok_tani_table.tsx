@@ -20,7 +20,7 @@ const Table: React.FC = () => {
       router.push('/login');
     }
 
-    fetch("http://103.127.133.115:8080/get_petambak_datatable")
+    fetch("http://www.tangkapdata2.my.id:8080/get_petambak_datatable")
     .then(
       response => response.json()
       )
