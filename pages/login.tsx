@@ -34,7 +34,8 @@ const Login: React.FC = () => {
       if (data.jum == 0) {
         alert("Username / Password salah");
       }else if (data.jum == 1) {
-        // how to redirect to `/kelompok_tani` page here ?
+        // set session
+        localStorage.setItem('isLoggedIn', 'true');
         router.push('/kelompok_tani');
       }
 
