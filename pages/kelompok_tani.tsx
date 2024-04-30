@@ -59,7 +59,7 @@ const handleSelectChange = async (e: { target: { options: any; selectedIndex: an
     console.log("===>>>" , namaKelompok);
 
     // =========== API ACCESS ===========
-    const response = await fetch('http://www.tangkapdata2.my.id:8080/cek_nm_kelompok', {
+    const response = await fetch('https://www.tangkapdata2.my.id:8080/cek_nm_kelompok', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const handleSelectChange = async (e: { target: { options: any; selectedIndex: an
         console.log("--------> masuk");
         // add to db
         // =========== API ACCESS ===========
-        const response = await fetch('http://www.tangkapdata2.my.id:8080/add_nm_kelompok', {
+        const response = await fetch('https://www.tangkapdata2.my.id:8080/add_nm_kelompok', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

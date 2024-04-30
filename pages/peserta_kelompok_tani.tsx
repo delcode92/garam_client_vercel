@@ -41,7 +41,7 @@ useEffect(() => {
 
   // get nama kelompok from database
   useEffect(() => {
-    fetch("http://www.tangkapdata2.my.id:8080/get_nm_kelompok").then(
+    fetch("https://www.tangkapdata2.my.id:8080/get_nm_kelompok").then(
       response => response.json()
     ).then(
       data => {
@@ -78,7 +78,7 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
 
     console.log("=== data kelompok: ", e.target.value);
     // 1. cek apakah slot kelompok tani masih tersedia ?
-    const response = await fetch('http://www.tangkapdata2.my.id:8080/get_slot_kelompok', {
+    const response = await fetch('https://www.tangkapdata2.my.id:8080/get_slot_kelompok', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
     console.log('Filename:', filename);
 
     // SAVE TO DATABASE
-    const response = await fetch('http://www.tangkapdata2.my.id:8080/save_petani', {
+    const response = await fetch('https://www.tangkapdata2.my.id:8080/save_petani', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

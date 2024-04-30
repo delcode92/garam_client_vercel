@@ -17,7 +17,7 @@ const Login: React.FC = () => {
     console.log('Password:', password);
    
     // =========== API ACCESS ===========
-    const response = await fetch('http://www.tangkapdata2.my.id:8080/login', {
+    const response = await fetch('https://www.tangkapdata2.my.id:8080/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

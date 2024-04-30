@@ -63,7 +63,7 @@ const handleLogout = () => {
     e.preventDefault();
     
     // SAVE TO DATABASE
-    const response = await fetch('http://www.tangkapdata2.my.id:8080/save_rekap', {
+    const response = await fetch('https://www.tangkapdata2.my.id:8080/save_rekap', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

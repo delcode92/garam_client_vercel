@@ -30,7 +30,7 @@ const Table: React.FC = () => {
     }
 
     // LOAD REKAP DATATABLE
-    fetch("http://www.tangkapdata2.my.id:8080/get_rekap_datatable")
+    fetch("https://www.tangkapdata2.my.id:8080/get_rekap_datatable")
     .then(
       response => response.json()
       )
@@ -61,7 +61,7 @@ const Table: React.FC = () => {
   const handleDelete = async (id: string) => {
     if (window.confirm('Yakin Hapus ?')) {
         // =========== API ACCESS ===========
-        const response = await fetch('http://www.tangkapdata2.my.id:8080/del_rekap_datatable', {
+        const response = await fetch('https://www.tangkapdata2.my.id:8080/del_rekap_datatable', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ const Table: React.FC = () => {
         // Check if the request was successful
         if (response.ok) {
           // reset datatable
-          fetch("http://www.tangkapdata2.my.id:8080/get_rekap_datatable")
+          fetch("https://www.tangkapdata2.my.id:8080/get_rekap_datatable")
           .then(
             response => response.json()
             )
@@ -122,7 +122,7 @@ const Table: React.FC = () => {
   const handleOpenModal =  async (id: string) => {
     
     // GET DATA BASED FROM ID
-    fetch("http://www.tangkapdata2.my.id:8080/get_edit_rekap_datatable/"+id)
+    fetch("https://www.tangkapdata2.my.id:8080/get_edit_rekap_datatable/"+id)
     .then(
       response => response.json()
       )
@@ -146,7 +146,7 @@ const Table: React.FC = () => {
     e.preventDefault();
 
     // UPDATE DATA REKAP
-    const response = await fetch('http://www.tangkapdata2.my.id:8080/update_rekap_datatable', {
+    const response = await fetch('https://www.tangkapdata2.my.id:8080/update_rekap_datatable', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ const Table: React.FC = () => {
     setIsModalOpen(false);
 
     // LOAD REKAP DATATABLE
-    fetch("http://www.tangkapdata2.my.id:8080/get_rekap_datatable")
+    fetch("https://www.tangkapdata2.my.id:8080/get_rekap_datatable")
     .then(
       response => response.json()
       )
