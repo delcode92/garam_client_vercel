@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import styles from '../styles/table.module.css';
+import Link from 'next/link';
 
 const Table: React.FC = () => {
   
@@ -183,12 +184,12 @@ const Table: React.FC = () => {
 
       {/* NAVBAR */}
       <nav className={styles.navbar}>
-        <a href="/kelompok_tani" className={styles.tab}>Tambah Kelompok</a>
-        <a href="/peserta_kelompok_tani" className={styles.tab}>Tambah Petambak</a>
-        <a href="/input_rekap" className={styles.tab}>Tambah Rekap</a>
-        <a href="/rekap_table" className={styles.tab}>Tabel Rekap</a>
-        <a href="/kelompok_tani_table" className={styles.tab}>Tabel Petambak</a>
-        <a href="/" className={styles.tab} onClick={handleLogout}>Logout</a>
+        <Link href="/kelompok_tani" className={styles.tab}>Tambah Kelompok</Link>
+        <Link href="/peserta_kelompok_tani" className={styles.tab}>Tambah Petambak</Link>
+        <Link href="/input_rekap" className={styles.tab}>Tambah Rekap</Link>
+        <Link href="/rekap_table" className={styles.tab}>Tabel Rekap</Link>
+        <Link href="/kelompok_tani_table" className={styles.tab}>Tabel Petambak</Link>
+        <Link href="/" className={styles.tab} onClick={handleLogout}>Logout</Link>
       </nav>
 
       <h1 className={styles.heading}>Table Rekap</h1>
@@ -228,9 +229,9 @@ const Table: React.FC = () => {
               <td>{row.jum_petambak}</td>
               <td>{row.jum_non_petambak}</td>
               <td>
-                <a  href="#" rel="noopener noreferrer" onClick={() => handleOpenModal(row.id)}>edit</a>
+                <Link  href="#" rel="noopener noreferrer" onClick={() => handleOpenModal(row.id)}>edit</Link>
                 <span> | </span>
-                <a key={row.id} href="#" rel="noopener noreferrer" data-id={row.id} onClick={() => handleDelete(row.id)}> delete</a>
+                <Link key={row.id} href="#" rel="noopener noreferrer" data-id={row.id} onClick={() => handleDelete(row.id)}> delete</Link>
               </td>
             </tr>
           ))}
