@@ -35,7 +35,7 @@ const Login: React.FC = () => {
         alert("Username / Password salah");
       }else if (data.jum == 1) {
         // set session
-        localStorage.setItem('isLoggedIn', 'true');
+        await localStorage.setItem('isLoggedIn', 'true');
         router.push('/kelompok_tani');
       }
 
