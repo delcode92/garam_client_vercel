@@ -34,9 +34,21 @@ const Login: React.FC = () => {
       if (data.jum == 0) {
         alert("Username / Password salah");
       }else if (data.jum == 1) {
-        // set session
-        await localStorage.setItem('isLoggedIn', 'true');
-        router.push('/kelompok_tani');
+        // on my nextJSI want to set session like below
+        // why even I have already add await, sometimes it directly run the `router.push('/kelompok_tani');`
+        // if that happend and the localstorage not yet has  value , page `kelompok_tani` will redirect again to login page
+        try {
+          await new Promise((resolve, reject) => {
+            localStorage.setItem('isLoggedIn', 'true');
+            // resolve();
+          });
+          router.push('/kelompok_tani');
+        } catch (error) {
+          console.error('Error setting item in localStorage:', error);
+        }
+        
+        // await localStorage.setItem('isLoggedIn', 'true');
+        // router.push('/kelompok_tani');
       }
 
       console.log('===>', data.jum);
