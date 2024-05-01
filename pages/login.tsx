@@ -68,7 +68,7 @@ const Login: React.FC = () => {
       <Head>
         <title>Login SIGRA</title>
       </Head>
-      <h1 className={styles.header}>Login</h1>
+      <h1 className={styles.header}>Login SIGRA</h1>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
           <label className={styles.label}>Username:</label>
