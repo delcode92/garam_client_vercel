@@ -175,6 +175,20 @@ const Table: React.FC = () => {
         }
         )
 
+    // GET SISA SLOT
+    const response = await fetch('https://www.tangkapdata2.my.id:8080/get_slot_kelompok', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ kelompok }),
+    });
+    
+    const data = await response.json();
+    console.log("=== data slot: ", data);
+    var sisa_slot = 10-data;
+    setSlot(sisa_slot);
+    
     // OPEN EDIT FORM
     setIsModalOpen(true);
   };
