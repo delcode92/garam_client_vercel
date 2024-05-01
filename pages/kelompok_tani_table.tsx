@@ -297,7 +297,7 @@ const Table: React.FC = () => {
 
             {/* MODAL CONTENT */}
             <h1 className={styles.heading}>Edit Petambak</h1>
-            <h2 className={styles.heading2}>{kelompok!='' ? kelompok + ' | Sisa Slot : '+ slot :''}</h2>
+            <h2 className={styles.heading}>{kelompok!='' ? kelompok + ' | Sisa Slot : '+ slot :''}</h2>
             <form onSubmit={handleSubmit}>
             
               {/* KECAMATAN */}

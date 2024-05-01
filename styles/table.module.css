@@ -248,7 +248,7 @@
 /* Modal content */
 .modal_content {
   background-color: white;
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
   border-radius: 8px;
   width: 700px;
   /* display: table-row; */
