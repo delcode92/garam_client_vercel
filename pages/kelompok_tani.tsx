@@ -112,7 +112,7 @@ const handleLogout = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>form kelompok tani</title>
+        <title>form kelompok petambak</title>
       </Head>
       
       {/* NAVBAR */}
@@ -126,7 +126,7 @@ const handleLogout = () => {
         <Link href="/" className={styles.tab} onClick={handleLogout}>Logout</Link>
       </nav>
 
-      <h1 className={styles.heading}>Form Kelompok Tani</h1>
+      <h1 className={styles.heading}>Form Kelompok Petambak Garam</h1>
       <form onSubmit={handleSubmit}>
         
         {/* KECAMATAN */}
