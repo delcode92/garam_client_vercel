@@ -140,6 +140,10 @@ const Table: React.FC = () => {
     // OPEN EDIT FORM
     setIsModalOpen(true);
   };
+  
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   // SUBMIT UPDATE REKAP
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)  =>  {
@@ -168,11 +172,6 @@ const Table: React.FC = () => {
         }
        )
     
-  };
-
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
   };
 
   return (

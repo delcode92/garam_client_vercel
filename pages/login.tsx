@@ -66,7 +66,7 @@ const Login: React.FC = () => {
   return (
     <div className={styles.container_login}>
       <Head>
-        <title>Login</title>
+        <title>Login SIGRA</title>
       </Head>
       <h1 className={styles.header}>Login</h1>
       <form onSubmit={handleSubmit}>

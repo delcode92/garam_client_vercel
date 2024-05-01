@@ -75,7 +75,8 @@ const handleSelectChange = async (e: { target: { options: any; selectedIndex: an
       if (data.jum > 0) {
         alert("Nama Kelompok Sudah Ada !!");
       }else if(data.jum == 0){
-        console.log("--------> masuk");
+        alert("Berhasil Disimpan");
+        // console.log("--------> masuk");
         // add to db
         // =========== API ACCESS ===========
         const response = await fetch('https://www.tangkapdata2.my.id:8080/add_nm_kelompok', {
