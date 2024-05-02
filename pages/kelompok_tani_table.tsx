@@ -25,7 +25,7 @@ const Table: React.FC = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [dataTable, setDataTable] = useState([{id:'', kecamatan:'', desa:'', nm_kelompok:'', nm_petambak:'', stat_kusuka:'', luas_lahan:'', tahun_bantuan:'', bukti:'', ket:''}]);
+  const [dataTable, setDataTable] = useState([{id:'', kecamatan:'', desa:'', nm_kelompok:'', nm_petambak:'', stat_kusuka:'', luas_lahan:'', tahun_bantuan:'', file_kusuka:'', ket:''}]);
   const router = useRouter();
 
   useEffect(() => {
@@ -291,7 +291,7 @@ const Table: React.FC = () => {
               <td>{row.luas_lahan}</td>
               <td>{row.tahun_bantuan}</td>
               <td>
-                <Link target="_blank" href="#" rel="noopener noreferrer">lihat</Link>
+                <Link target="_blank" href={row.file_kusuka} rel="noopener noreferrer">lihat</Link>
               </td>
               <td>{row.ket}</td>
               <td>

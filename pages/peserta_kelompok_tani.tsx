@@ -17,6 +17,7 @@ const [kusuka, setKusuka] = useState('');
 const [luasLahan, setLuasLahan] = useState('');
 const [tahunBantuan, setTahunBantuan] = useState('');
 const [bukti, setBukti] = useState('');
+const [isLoading, setIsLoading] = useState(false);
 const [ket, setKet] = useState('');
 const [slot, setSlot] = useState(0);
 const [nmKelompok, setNmKelompok] = useState([{nm_kelompok:''}]);
@@ -98,19 +99,36 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
   };
 
   // ON SUBMIT
-  // how to get filename string ??
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Get the file input element
     const fileInput = document.getElementById('bukti') as HTMLInputElement;
     const file = fileInput.files ? fileInput.files[0] : null;
+    const formData = new FormData();
+
+    if (file) {
+      // File exists, append it to FormData
+      formData.append('file', file);
+      
+      // Now you can use the formData object
+    } else {
+      console.log('No file selected.');
+    }
 
     // Get the filename
-    var filename = file ? file.name : '';
-    setBukti(filename);
-    // Log the filename
-    console.log('Filename:', filename);
+    // var filename = file ? file.name : '';
+    // setBukti(filename);
+    // // Log the filename
+    // console.log('Filename:', filename);
+
+    // SEND TO CLOUDINARY
+    setIsLoading(true);
+    const res = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+    const { fileUrl } = await res.json();
 
     // SAVE TO DATABASE
     const response = await fetch('https://www.tangkapdata2.my.id:8080/save_petani', {
@@ -118,13 +136,10 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ kecamatan, desa, kelompok, namaPetambak, kusuka, luasLahan, tahunBantuan, bukti, ket }),
+      body: JSON.stringify({ kecamatan, desa, kelompok, namaPetambak, kusuka, luasLahan, tahunBantuan, fileUrl, ket }),
     });
     
-    // const data = await response.json();
-    
-    // console.log('Form submitted:', { kecamatan, desa, kelompok, namaPetambak, kusuka, luasLahan, tahunBantuan, bukti, ket });
-    alert("Berhasil Disimpan !");
+    setIsLoading(false);
 
     window.location.reload();
   };
@@ -153,6 +168,14 @@ const handleLogout = () => {
         <Link href="/kelompok_tani_table" className={styles.tab}>Tabel Petambak</Link>
         <Link href="/" className={styles.tab} onClick={handleLogout}>Logout</Link>
       </nav>
+
+      {isLoading ? (
+        <div className={styles.loading_container}>
+        <div className={styles.loading}>
+          <h1>Uploading Data ...</h1>
+        </div>  
+      </div>
+      ) : (<span></span>)}
 
       <h1 className={styles.heading}>Tambah Petambak</h1>
       <h2 className={styles.heading2}>{kelompok!='' ? kelompok + ' | Sisa Slot : '+ slot :''}</h2>
@@ -231,7 +254,7 @@ const handleLogout = () => {
         {/* BUKTI */}
         <div className={styles.formGroup}>
           <label htmlFor="bukti" className={styles.label}>Bukti:</label>
-          <input type="file" id="bukti"  className={styles.fileInput} />
+          <input name="file"  type="file" id="bukti"  className={styles.fileInput} />
         </div>
 
         {/* KETERANGAN */}

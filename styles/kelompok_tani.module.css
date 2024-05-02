@@ -1,4 +1,28 @@
 /* styles/kelompok_tani.module.css */
+.loading_container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(51, 51, 51, 0.8);
+}
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* drop shadow */
+}
+
+.loading h1 {
+  text-align: center;
+  margin: 0; /* remove default margin */
+}
 
 .container {
     max-width: 800px;
