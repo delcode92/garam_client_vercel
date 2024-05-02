@@ -141,6 +141,7 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
     
     setIsLoading(false);
 
+    // coba123
     // window.location.reload();
   };
 
