@@ -141,7 +141,7 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
     
     setIsLoading(false);
 
-    window.location.reload();
+    // window.location.reload();
   };
 
 // LOGOUT
