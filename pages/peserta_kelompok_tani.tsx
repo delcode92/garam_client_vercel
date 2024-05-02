@@ -120,8 +120,7 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
     // var filename = file ? file.name : '';
     // setBukti(filename);
     // // Log the filename
-    // console.log('Filename:', filename);
-
+    
     // SEND TO CLOUDINARY
     setIsLoading(true);
     const res = await fetch('/api/upload', {
@@ -129,7 +128,8 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
       body: formData,
     });
     const { fileUrl } = await res.json();
-
+    console.log(fileUrl);
+    
     // SAVE TO DATABASE
     const response = await fetch('https://www.tangkapdata2.my.id:8080/save_petani', {
       method: 'POST',
