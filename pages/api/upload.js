@@ -35,6 +35,6 @@ export default async function handler(req, res) {
     res.status(200).json({ fileUrl: data.secure_url });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Server upload error' });
+    res.status(500).json({ message: 'Server upload error', err:error });
   }
 }
