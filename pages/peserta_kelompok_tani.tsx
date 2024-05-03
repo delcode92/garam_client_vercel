@@ -111,9 +111,41 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
       // File exists, append it to FormData
       formData.append('file', file);
       
+      // SEND TO CLOUDINARY
+      setIsLoading(true);
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const { fileUrl } = await res.json();
+      console.log(fileUrl);
+      
+      // SAVE TO DATABASE
+      const response = await fetch('https://www.tangkapdata2.my.id:8080/save_petani', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ kecamatan, desa, kelompok, namaPetambak, kusuka, luasLahan, tahunBantuan, fileUrl, ket }),
+      });
+      
+      setIsLoading(false);
+
       // Now you can use the formData object
     } else {
       console.log('No file selected.');
+
+      // SAVE TO DATABASE
+      setIsLoading(true);
+      var fileUrl = "";
+      const response = await fetch('https://www.tangkapdata2.my.id:8080/save_petani', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ kecamatan, desa, kelompok, namaPetambak, kusuka, luasLahan, tahunBantuan, fileUrl, ket }),
+      });
+      setIsLoading(false);
     }
 
     // Get the filename
@@ -122,24 +154,24 @@ const handleSelectChangeKecamatan = async (e: { target: { options: any; selected
     // // Log the filename
     
     // SEND TO CLOUDINARY
-    setIsLoading(true);
-    const res = await fetch('/api/upload', {
-      method: 'POST',
-      body: formData,
-    });
-    const { fileUrl } = await res.json();
-    console.log(fileUrl);
+    // setIsLoading(true);
+    // const res = await fetch('/api/upload', {
+    //   method: 'POST',
+    //   body: formData,
+    // });
+    // const { fileUrl } = await res.json();
+    // console.log(fileUrl);
     
-    // SAVE TO DATABASE
-    const response = await fetch('https://www.tangkapdata2.my.id:8080/save_petani', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ kecamatan, desa, kelompok, namaPetambak, kusuka, luasLahan, tahunBantuan, fileUrl, ket }),
-    });
+    // // SAVE TO DATABASE
+    // const response = await fetch('https://www.tangkapdata2.my.id:8080/save_petani', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ kecamatan, desa, kelompok, namaPetambak, kusuka, luasLahan, tahunBantuan, fileUrl, ket }),
+    // });
     
-    setIsLoading(false);
+    // setIsLoading(false);
 
     // coba123
     window.location.reload();
